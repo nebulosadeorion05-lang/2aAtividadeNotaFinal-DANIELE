@@ -1,7 +1,8 @@
 CREATE DATABASE livraria;
 USE livraria;
-CREATE TABLE books (
+CREATE TABLE livros (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    author VARCHAR(255) NOT NULL
+    título VARCHAR(255) NOT NULL,
+    autor VARCHAR(255) NOT NULL,
+    ano INT
 );
