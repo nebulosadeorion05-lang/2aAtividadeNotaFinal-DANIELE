@@ -1,19 +1,23 @@
-<DOCTYPE! html>
+<DOCTYPE! HTML>
 <html lang = "pt-BR">
 <head>
   <meta charset = "UTF-8">
   <meta name = "viewport" content = "width = device-width, inicial-scale = 1.0">
-  <title> index.php </title>
+  <title> Banco de Dados Livraria </title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: ;
+      background-color: white;
       margin: 0,5 rem;
       padding: 0,5 rem;
     }
     h1 {
       text-align: center;
-      color: #8A2BE2; 
+      color: #4B0082; 
+    }
+    h2 {
+      text-align: left;
+      color: #4B0082;
     }
     table {
       width: 80%;
@@ -25,10 +29,11 @@
       text-align: center;
     }
     th {
-      background-color: #EE82EE;
+      background-color: #4B0082;
+      color: white;
     }
     button {
-      background-color: #EE82EE;
+      background-color: #4B0082;
       border: none;
       padding: 8px 12px;
       color: white;
@@ -107,7 +112,12 @@
         <td> 1988 </td>
       </tr>
     </table>
+    <button onclick = "delete"> Excluir </button>
+  <h2> Pesquisar Livro </h2>
+  <div class = "form-container">
   <form method = "post">
+    <label for = "id"> ID: </label>
+    <input type = "number" id = "id" name = "id" required><br><br>
     <label for = "título"> Título: </label>
     <input type = "text" id = "título" name = "título" required><br><br>
     <label for = "autor"> Autor: </label>
@@ -116,5 +126,22 @@
     <input type = "number" id = "ano" name = "ano"><br><br>
     <button type = "submit" name = "pesquisar"> Pesquisar </button>
     <button type = "submit" name = "limpar"> Limpar </button>
+  </form>
+  <h2> Acionar Novo Livro </h2>
+  <form method = "post">
+    <label for = "id"> ID: </label>
+    <input type = "number" id = "id" name = "id" required><br><br>
+    <label for = "título"> Título: </label>
+    <input type = "text" id = "título" name = "título" required><br><br>
+    <label for = "autor"> Autor: </label>
+    <input type = "text" id = "autor" name = "autor"><br><br>
+    <label for = "ano"> Ano de Publicação: </label>
+    <input type = "number" id = "ano" name = "ano"><br><br>
+    <button type = "submit" name = "adicionar"> Adicionar </button>
+    <button type = "submit" name = "limpar"> Limpar </button>
+  </form>
+  </div>
+  <script src = "js/add_book.js"> </script>
+  <script src = "js/delete_book.js"> </script>
 </body>
 </html>
