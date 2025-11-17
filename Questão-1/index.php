@@ -11,18 +11,17 @@
       margin: 0,5 rem;
       padding: 0,5 rem;
     }
-    h1 {
-      text-align: center;
+    h1, h2 {
       color: #4B0082; 
     }
-    h2 {
-      text-align: left;
-      color: #4B0082;
+    h1 {
+      text-align: center;
     }
     table {
       width: 80%;
       margin: 20px;
       background: white;
+      border-collapse: collapse;
     }
     th, td {
       padding: 12px;
@@ -39,6 +38,13 @@
       color: white;
       border-radius: 4px;
       cursor: pointer;
+    }
+    .form-container {
+      width: 80%;
+      margin: auto;
+    }
+    .form label {
+      font-weight:bold;
     }
   </style>
 </head>
@@ -112,33 +118,33 @@
         <td> 1988 </td>
       </tr>
     </table>
-    <button onclick = "delete"> Excluir </button>
+    <button onclick = "deleteBook()"> Excluir </button>
   <h2> Pesquisar Livro </h2>
   <div class = "form-container">
   <form method = "post">
     <label for = "id"> ID: </label>
     <input type = "number" id = "id" name = "id" required><br><br>
-    <label for = "título"> Título: </label>
-    <input type = "text" id = "título" name = "título" required><br><br>
-    <label for = "autor"> Autor: </label>
-    <input type = "text" id = "autor" name = "autor"><br><br>
-    <label for = "ano"> Ano de Publicação: </label>
-    <input type = "number" id = "ano" name = "ano"><br><br>
+    <label for = "title"> Título: </label>
+    <input type = "text" id = "title" name = "título"><br><br>
+    <label for = "author"> Autor: </label>
+    <input type = "text" id = "author" name = "autor"><br><br>
+    <label for = "year"> Ano de Publicação: </label>
+    <input type = "number" id = "year" name = "ano"><br><br>
     <button type = "submit" name = "pesquisar"> Pesquisar </button>
-    <button type = "submit" name = "limpar"> Limpar </button>
+    <button type = "reset"> Limpar </button>
   </form>
   <h2> Acionar Novo Livro </h2>
-  <form method = "post">
-    <label for = "id"> ID: </label>
-    <input type = "number" id = "id" name = "id" required><br><br>
-    <label for = "título"> Título: </label>
-    <input type = "text" id = "título" name = "título" required><br><br>
-    <label for = "autor"> Autor: </label>
-    <input type = "text" id = "autor" name = "autor"><br><br>
-    <label for = "ano"> Ano de Publicação: </label>
-    <input type = "number" id = "ano" name = "ano"><br><br>
-    <button type = "submit" name = "adicionar"> Adicionar </button>
-    <button type = "submit" name = "limpar"> Limpar </button>
+  <form onsubmit = "event.preventDefault(); addBook();">
+    <label for = "new_id"> ID: </label>
+    <input type = "number" id = "new_id" name = "id" required><br><br>
+    <label for = "new_title"> Título: </label>
+    <input type = "text" id = "new_title" name = "título"><br><br>
+    <label for = "new_author"> Autor: </label>
+    <input type = "text" id = "new_author" name = "autor"><br><br>
+    <label for = "new_year"> Ano de Publicação: </label>
+    <input type = "number" id = "new_year" name = "ano"><br><br>
+    <button type = "submit"> Adicionar </button>
+    <button type = "reset"> Limpar </button>
   </form>
   </div>
   <script src = "js/add_book.js"> </script>
