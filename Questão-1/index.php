@@ -1,4 +1,4 @@
-<DOCTYPE! HTML>
+<doctype! html>
 <html lang = "pt-BR">
 <head>
   <meta charset = "UTF-8">
@@ -47,6 +47,20 @@
       font-weight:bold;
     }
   </style>
+  <script>
+    function deleteBook(id,título) {
+      const f = document.createElement('form');
+      f.method = 'post';
+      f.action = 'delete_book.php';
+      const i = document.createElement('input');
+      i.type = 'hidden';
+      i.name = 'id';
+      i.value = id;
+      f.appendChild(i);
+      document.body.appendChild(f);
+      f.submit();
+    }
+  </script>
 </head>
 <body>
   <h1> Banco de Dados Livraria </h1>
@@ -147,7 +161,7 @@
     <button type = "reset"> Limpar </button>
   </form>
   </div>
-  <script src = "js/add_book.js"> </script>
-  <script src = "js/delete_book.js"> </script>
+  <script src = "js/add_book.php"> </script>
+  <script src = "js/delete_book.php"> </script>
 </body>
 </html>
