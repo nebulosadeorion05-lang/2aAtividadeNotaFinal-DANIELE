@@ -1,3 +1,6 @@
+session_start();
+require_once __DIR__ . 'database.php';
+
 function addBook() {
     const title = document.querySelector("#title").value;
     const author = document.querySelector("#author").value;
