@@ -2,30 +2,26 @@
 include 'database.php';
 
 $sql = "SELECT * FROM tarefas ORDER BY data_vencimento";
-$resultado = $conexao -> query($sql);
+$resultado = $conexao->query($sql);
 ?>
 
-<DOCTYPE! html>
-<html lang = "pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta charset = "UTF-8">
-  <meta name = "viewport" content = "width = device-width, inicial-scale = 1.0">
-  <title> Gerenciador de Tarefas </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciador de Tarefas</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: white;
-      margin: 0,5 rem;
-      padding: 0,5 rem;
+      margin: 0.5rem;
+      padding: 0.5rem;
     }
     h1 {
       text-align: center;
-      color: #4B0082; 
-    }
-    .form label {
-      width: 80%;
-      margin: 20px;
-      background: white;
+      color: #4B0082;
     }
     button {
       background-color: #4B0082;
@@ -34,67 +30,75 @@ $resultado = $conexao -> query($sql);
       color: white;
       border-radius: 4px;
       cursor: pointer;
+      margin-right: 10px;
     }
   </style>
 </head>
+
 <body>
-  <h1> Gerenciador de Tarefas </h1>
-    
-  <form method = "post" action = "add_tarefa.php">
-    <label for = "descricao"> Descrição: </label><br>
-    <input type = "text" id = "descricao" name = "descricao" required><br><br>
-    <label for = "data_vencimento"> Data de Vencimento: </label>
-    <input type = "date" id = "data_vencimento" name = "data_vencimento"><br><br>
-    <button type = "submit"> Adicionar </button>
-    <button type = "reset"> Limpar </button>
+  <h1>Gerenciador de Tarefas</h1>
 
-  <h2> Tarefas Pendentes </h2>
+  <form method="post" action="add_tarefa.php">
+    <label for="descricao">Descrição:</label><br>
+    <input type="text" id="descricao" name="descricao" required><br><br>
+
+    <label for="data_vencimento">Data de Vencimento:</label>
+    <input type="date" id="data_vencimento" name="data_vencimento"><br><br>
+
+    <button type="submit">Adicionar</button>
+    <button type="reset">Limpar</button>
+  </form>
+
+  <h2>Tarefas Pendentes</h2>
+
   <?php
-  $pendentes  = $conexao -> query("SELECT * FROM tarefas WHERE concluida = 0 ORDER BY data_vencimento");
+  $pendentes = $conexao->query("SELECT * FROM tarefas WHERE concluida = 0 ORDER BY data_vencimento");
 
-  if($pendentes -> num_rows > 0) {
+  if ($pendentes->num_rows > 0) {
     echo "<ul>";
-    while($t = $pendentes -> fetch_assoc()) {
-      echo "<li>
-        {$t['$decricao']} - Vence em: {$t['data_vencimento']}
-        <form method = "POST" action = "update_tarefa.php">
-          <label for = "pendentes"> Tarefa Pendente: </label><br>
-          <input type = "hidden" name = "id" value = '{$t['id']}'><br><br>
-          <button type = "submit"> Marcar Como Concluída </button>
-          <button type = "reset"> Limpar </button>
+    while ($t = $pendentes->fetch_assoc()) {
+      echo "
+      <li>
+        {$t['descricao']} — Vence em: {$t['data_vencimento']}
+        
+        <form method='post' action='update_tarefa.php'>
+          <input type='hidden' name='id' value='{$t['id']}'>
+          <button type='submit'>Marcar como Concluída</button>
         </form>
-        <form method = "POST" action = "delete_tarefa.php">
-          <label for = "pendentes"> Tarefa Pendente: </label><br>
-          <input type = "hidden" name = "id" value = '{$t['id']}'><br><br>
-          <button type = "submit"> Excluir </button>
-          <button type = "reset"> Limpar </button>
+
+        <form method='post' action='delete_tarefa.php'>
+          <input type='hidden' name='id' value='{$t['id']}'>
+          <button type='submit'>Excluir</button>
         </form>
-      <li>"
+      </li>";
     }
     echo "</ul>";
   } else {
-    echo "<p> Não há tarefas pendentes! </p>";
+    echo "<p>Não há tarefas pendentes!</p>";
   }
   ?>
-  <h2> Tarefas Concluídas </h2>
-  <?php
-  $concluidas = $conexao -> query("SELECT * FROM tarefas WHERE concluida = 1 ORDER BY data_vencimento");
 
-  if ($concluidas -> num_rows > 0) {
+  <h2>Tarefas Concluídas</h2>
+
+  <?php
+  $concluidas = $conexao->query("SELECT * FROM tarefas WHERE concluida = 1 ORDER BY data_vencimento");
+
+  if ($concluidas->num_rows > 0) {
     echo "<ul>";
-    while ($t = $concluidas -> fetch_assoc()) {
-        echo "<li>
-            {$t['descricao']} — Concluída
-            <form method = 'post' action = 'delete_tarefa.php'>
-                <input type = 'hidden' name= 'id' value= '{$t['id']}'>
-                <button type = 'submit'> Excluir </button>
-                <button type = 'reset'> Limpar </button> 
-            </form>
-        </li>";
+    while ($t = $concluidas->fetch_assoc()) {
+      echo "
+      <li>
+        {$t['descricao']} — Concluída
+        
+        <form method='post' action='delete_tarefa.php'>
+          <input type='hidden' name='id' value='{$t['id']}'>
+          <button type='submit'>Excluir</button>
+        </form>
+      </li>";
     }
     echo "</ul>";
   } else {
-    echo "<p> Não há tarefas concluídas. </p>";
+    echo "<p>Não há tarefas concluídas.</p>";
   }
   ?>
 </body>
