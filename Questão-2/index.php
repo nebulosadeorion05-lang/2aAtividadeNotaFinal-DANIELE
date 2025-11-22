@@ -1,7 +1,7 @@
 <?php
 include 'database.php';
 
-$sql = "SELECT * FROM tarefas ORDER BY vencimento";
+$sql = "SELECT * FROM tarefas ORDER BY data_vencimento";
 $resultado = $conexao -> query($sql);
 ?>
 
@@ -78,7 +78,7 @@ $resultado = $conexao -> query($sql);
   ?>
   <h2> Tarefas Concluídas </h2>
   <?php
-  $concluidas = $conexao -> query("SELECT * FROM tarefas WHERE concluida = 1 ORDER BY vencimento");
+  $concluidas = $conexao -> query("SELECT * FROM tarefas WHERE concluida = 1 ORDER BY data_vencimento");
 
   if ($concluidas -> num_rows > 0) {
     echo "<ul>";
