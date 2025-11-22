@@ -38,14 +38,14 @@
   <h1> Cadastro de Livros </h1>
   <div class = "form-container">
   <form method = "post" action = "add_book.php">
-    <label for = "id"> ID: </label><br>
-    <input type = "number" id = "id" name = "id" required><br><br>
-    <label for = "title"> Título: </label><br>
-    <input type = "text" id = "title" name = "título"><br><br>
-    <label for = "author"> Autor: </label><br>
-    <input type = "text" id = "author" name = "autor"><br><br>
-    <label for = "year"> Ano de Publicação: </label><br>
-    <input type = "number" id = "year" name = "ano"><br><br>
+    <label for = "ID"> ID: </label><br>
+    <input type = "number" id = "ID" name = "ID" required><br><br>
+    <label for = "titulo"> Título: </label><br>
+    <input type = "text" id = "titulo" name = "titulo"><br><br>
+    <label for = "autor"> Autor: </label><br>
+    <input type = "text" id = "autor" name = "autor"><br><br>
+    <label for = "data_publicacao"> Ano de Publicação: </label><br>
+    <input type = "number" id = "data_publicacao" name = "data_publicacao"><br><br>
     <button type = "submit" name = "add_book"> Cadastrar </button>
     <button type = "reset"> Limpar </button>
   </form>
@@ -67,14 +67,14 @@
   <h2> Excluir Livro </h2>
   <div class = "form-container">
   <form method = "post" action = "delete_book.php">
-    <label for = "id"> ID: </label><br>
-    <input type = "number" id = "id" name = "id" required><br><br>
-    <label for = "title"> Título: </label><br>
-    <input type = "text" id = "title" name = "título"><br><br>
-    <label for = "author"> Autor: </label><br>
-    <input type = "text" id = "author" name = "autor"><br><br>
-    <label for = "year"> Ano de Publicação: </label><br>
-    <input type = "number" id = "year" name = "ano"><br><br>
+    <label for = "ID"> ID: </label><br>
+    <input type = "number" id = "ID" name = "ID" required><br><br>
+    <label for = "titulo"> Título: </label><br>
+    <input type = "text" id = "titulo" name = "titulo"><br><br>
+    <label for = "autor"> Autor: </label><br>
+    <input type = "text" id = "autor" name = "autor"><br><br>
+    <label for = "data_publicacao"> Ano de Publicação: </label><br>
+    <input type = "number" id = "data_publicacao" name = "data_publicacao"><br><br>
     <button type = "submit" name = "delete_book.php"> Excluir </button>
     <button type = "reset"> Limpar </button>
   </form>
