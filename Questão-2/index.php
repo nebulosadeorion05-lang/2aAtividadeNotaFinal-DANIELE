@@ -1,3 +1,10 @@
+<?php
+include 'database.php';
+
+$sql = "SLECT * FROM tarefas ORDER BY vencimento";
+$resultado = $conexao -> query($sql);
+?>
+
 <DOCTYPE! html>
 <html lang = "pt-BR">
 <head>
@@ -38,10 +45,10 @@
   </style>
 </head>
 <body>
-  <h1>  </h1>
+  <h1> Gerenciador de Tarefas </h1>
     
-  <form method = "post">
-    <label for = "título">  </label>
+  <form method = "post" action = "add_tarefa.php">
+    <label for = "descricao"> Descrição: </label>
     <input type = "text" id = "título" name = "título" required><br><br>
     <label for = "autor">  </label>
     <input type = "text" id = "autor" name = "autor"><br><br>
