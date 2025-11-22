@@ -22,7 +22,7 @@ $resultado = $conexao -> query($sql);
       text-align: center;
       color: #4B0082; 
     }
-    . {
+    .label {
       width: 80%;
       margin: 20px;
       background: white;
@@ -77,6 +77,25 @@ $resultado = $conexao -> query($sql);
   }
   ?>
   <h2> Tarefas Concluídas </h2>
-  
+  <?php
+  $concluidas = $conexao -> query("SELECT * FROM tarefas WHERE concluida = 1 ORDER BY vencimento");
+
+  if ($concluidas -> num_rows > 0) {
+    echo "<ul>";
+    while ($t = $concluidas -> fetch_assoc()) {
+        echo "<li>
+            {$t['descricao']} — Concluída
+            <form method = 'post' action = 'delete_tarefa.php'>
+                <input type = 'hidden' name= 'id' value= '{$t['id']}'>
+                <button type = 'submit'> Excluir </button>
+                <button type = 'reset'> Limpar </button> 
+            </form>
+        </li>";
+    }
+    echo "</ul>";
+  } else {
+    echo "<p> Não há tarefas concluídas. </p>";
+  }
+  ?>
 </body>
 </html>
