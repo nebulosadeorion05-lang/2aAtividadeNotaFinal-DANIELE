@@ -1,15 +1,22 @@
-session_start();
-require_once __DIR__ . 'database.php';
+<?php
+require_once "database.php";
 
-function addBook() {
-    const title = document.querySelector("#title").value;
-    const author = document.querySelector("#author").value;
+if(isset($_POST["add_book"])) {
 
-    fetch("http://localhost:3000/add_book", {
-        method: "post"
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({title, author})
-    })
-    .then(res => res.json())
-    .then(() => location.reload());
+    $titulo = $_POST["titulo"];
+    $autor = $_POST["autor"];
+    $ID = $_POST["ID"];
+    $data_publicacao = $_POST["data_publicacao"];
+
+    $stmt = $conexao -> prepare("INSERT INTO livros (ID, titulo, autor, data_publicacao) VALUES (?, ?, ?, ?)");
+    $stmt -> bind_param("isss", $ID, $titulo, $autor, $data_publicacao);
+
+    if($stmt -> execute()) {
+        echo "<p> Cadastro feito com sucesso! </p>"
+    } else {
+        echo "<p> Erro ao efeturar cadastro. Tente novamente! </p>"
+    }
+    header("location: index.php");
+    exit;
 }
+?>
