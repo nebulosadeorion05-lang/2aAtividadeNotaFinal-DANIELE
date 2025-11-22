@@ -22,7 +22,7 @@ $resultado = $conexao -> query($sql);
       text-align: center;
       color: #4B0082; 
     }
-    .label {
+    .form label {
       width: 80%;
       margin: 20px;
       background: white;
