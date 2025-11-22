@@ -13,7 +13,7 @@ if(isset($_POST["delete_book"])) {
     } else {
         echo "<p> Erro ao efeturar exclusão do livro. Tente novamente! </p>"
     }
-    header("location: index.php");
+    header("Location: index.php");
     exit;
 }
 ?>
