@@ -16,7 +16,7 @@ if(isset($_POST["add_book"])) {
     } else {
         echo "<p> Erro ao efeturar cadastro. Tente novamente! </p>"
     }
-    header("location: index.php");
+    header("Location: index.php");
     exit;
 }
 ?>
