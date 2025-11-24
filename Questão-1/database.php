@@ -4,7 +4,11 @@ $usuario = "root";
 $senha = "";
 $banco = "livraria";
 
-$conexao = new mysql($host, $usuario, $senha, $banco);
+$conexao = new mysqli($host, $usuario, $senha, $banco);
+
+if ($conexao->connect_errno) {
+    die("Falha na conexão: (" . $conexao->connect_errno . ") " . $conexao->connect_error);
+}
 
 $sql = "CREATE TABLE IF NOT EXISTS livros (
     ID INT PRIMARY KEY,
@@ -13,6 +17,6 @@ $sql = "CREATE TABLE IF NOT EXISTS livros (
     data_publicacao DATE NOT NULL
 )";
 
-$conexao -> query($sql);
-$resultado = $conexao -> query("SELECT * FROM livros ORDER BY ID ASC");
+$conexao->query($sql);
+$resultado = $conexao->query("SELECT * FROM livros ORDER BY ID ASC");
 ?>
