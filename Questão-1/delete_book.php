@@ -3,16 +3,18 @@ require_once "database.php";
 
 if(isset($_POST["delete_book"])) {
 
-    $ID = $_POST["ID"];
+    $ID = isset($_POST["ID"]) ? (int)$_POST["ID"] : null;
 
-    $stmt = $conexao -> prepare("DELETE FROM livros WHERE ID =  ?");
-    $stmt -> bind_param("i", $ID);
-
-    if($stmt -> execute()) {
-        echo "<p> Exclusão feita com sucesso! </p>"
-    } else {
-        echo "<p> Erro ao efeturar exclusão do livro. Tente novamente! </p>"
+    $stmt = $conexao->prepare("DELETE FROM livros WHERE ID = ?");
+    if ($stmt === false) {
+        header("Location: index.php");
+        exit;
     }
+    $stmt->bind_param("i", $ID);
+
+    $stmt->execute();
+    $stmt->close();
+
     header("Location: index.php");
     exit;
 }
